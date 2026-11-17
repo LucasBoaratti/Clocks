@@ -87,6 +87,7 @@ int main(int argc, char *argv[]) {
 
 				// Imprimindo na tela, a quantidade de clocks gastos
 				printf("\nForam utilizados %.2f clocks", elapsed);
+				
 				break;
 			case 4:
 				// Guardando o valor do clock antes de executar as chamadas da funcao

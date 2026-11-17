@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
 #include "fila.h"
 
 Fila f;
@@ -8,6 +11,26 @@ void inicializar(){
 	f.fim = -1;
 
 	printf("\nFila iniciada.\n");
+}
+
+// Funcoes para o trabalho de clocks
+int numeroAleatorio(int low, int high) {
+	int k;
+	double d;
+
+	d = (double) rand () / ((double) RAND_MAX + 1);
+	
+	k = d * (high - low + 1);
+
+	return low + k;
+}
+
+int obterDado() {
+	return numeroAleatorio(0, TAM_MAX);
+}
+
+void exibirDado(int p) {
+	printf("\nElemento: %i", p);
 }
 
 int verificarVazia(){
@@ -38,8 +61,6 @@ void inserir(int numero){
 
 		//insere o numero no vetor no final
 		f.vetor[f.fim] = numero;
-
-		printf("\nNumero %d adicionado com sucesso!\n", numero);
 	}
  	//se estiver cheia, informa o usu�rio
 	else {
@@ -92,75 +113,4 @@ int remover() {
 
 		return -1;
 	}
-}
-
-
-//Funcoes para testes automatizados
-void emitirResultado(int resultado) {
-	if(resultado) 
-		printf("\nGREEN: Passou!");
-	else printf("\nRED: Nao passou!");
-}
-
-void testar1_VaziaFila(){
-	printf("\nTeste 1: Este teste irah verificar a fila vazia");
-	inicializar();
-	if(verificarVazia()) {
-		emitirResultado(1);
-	} else emitirResultado(0);
-}
-
-void testar2_InserirFila(int quant){
-	int numeros[quant], i;
-	printf("\nTeste 2: Este teste irah inserir %d elementos na fila", quant);
-	if (quant > TAM_MAX)
-		printf(", e terah que dizer que a fila estah cheia, inserindo somente os %d primeiros", TAM_MAX);
-	
-	for(i = 0; i < quant; i++)
-		numeros[i] = i+1;
-		
-	inicializar();
-	for(i = 0; i < quant; i++)
-		inserir(numeros[i]);
-		
-	for(i = 0; i < quant && i < TAM_MAX; i++)
-		if(f.vetor[i] != numeros[i]) {
-			emitirResultado(0);
-			return;
-		}
-	emitirResultado(1);
-}
-
-void testar3_RemoverFila(){
-	int removido = 0;
-	printf("\nTeste 3: Este teste irah tentar remover de uma fila vazia");
-	inicializar();
-	removido = remover();
-	if(verificarVazia())
-		emitirResultado(1);
-	else emitirResultado(0);
-}
-
-void testar4_RemoverFila(int quant){
-	int removido = 0, i, numeros[quant];
-	printf("\nTeste 4: Este teste irah inserir %d elemento na fila e remove-lo, deixando a fila vazia", quant);
-	for(i = 0; i < quant; i++)
-		numeros[i] = i+1;
-	
-	inicializar();
-	for(i = 0; i < quant; i++) {
-		inserir(numeros[i]);
-	}
-	
-	for(i = 0; i < quant && i < TAM_MAX; i++) {
-		removido = remover();
-		if(removido != numeros[i]) {
-			emitirResultado(0);
-			return;
-		}
-	}
-	//verifica se a fila ficou vazia
-	if(verificarVazia())
-		emitirResultado(1);
-	else emitirResultado(0);
 }

@@ -1,9 +1,16 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
 #include "fila.h"
 
 int main(int argc, char *argv[]) {
-	int temp;
-	int opcao;
+	int temp, opcao, quantidade;
+	double start, finish, elapsed;
+
+	printf("\nDigite a quantidade de elementos para testar: ");
+	scanf("%d", &quantidade);
+
 	inicializar();
 
 	do {
@@ -13,10 +20,7 @@ int main(int argc, char *argv[]) {
 		printf("\n2. Inserir");
 		printf("\n3. Remover");
 		printf("\n4. Imprimir");
-		printf("\n5. Realizar testes de inicializar a fila");
-		printf("\n6. Realizar testes de inserir na fila");
-		printf("\n7. Realizar testes de remover na fila");
-		printf("\n8. Sair");
+		printf("\n5. Sair");
 		printf("\nDigite a opcao desejada: ");
 		
 		//ler a opcao desejada pelo usuario
@@ -28,44 +32,85 @@ int main(int argc, char *argv[]) {
 				inicializar();
 				break;
 			case 2:
-				printf("Digite o numero: ");
-				scanf("%d", &temp);
-				inserir(temp);
+				// Validacao de quantidade de elementos
+				if (quantidade < 0 || quantidade > TAM_MAX) {
+					printf("\nDigite uma quantidade valida.\n");
+
+					break;
+				}
+
+				// Guardando o valor do clock antes de executar as chamadas da funcao
+				start = (double) clock();
+
+				// Laco for que insere a quantidade de elementos desejados
+				for (int i = 0; i < quantidade; i++) {
+					temp = obterDado();
+
+					inserir(temp);
+
+					exibirDado(temp);
+				}
+
+				// Guardando o valor do clock após executar as chamadas da funcao
+				finish = (double) clock();
+
+				// Calculando a diferenca de clocks entre o depois e antes das chamadas
+				elapsed = finish - start;
+
+				// Imprimindo na tela, a quantidade de clocks gastos
+				printf("\nForam utilizados %.2f clocks", elapsed);
+
 				break;
 			case 3:
-				temp = remover();
-				printf("\nNumero removido: %d", temp);
+				// Validacao de quantidade de elementos
+				if (quantidade < 0 || quantidade > TAM_MAX) {
+					printf("\nDigite uma quantidade valida.\n");
+
+					break;
+				}
+
+				// Guardando o valor do clock antes de executar as chamadas da funcao
+				start = (double) clock();
+
+				// Laco for que insere a quantidade de elementos desejados
+				for (int i = 0; i < quantidade; i++) {
+					temp = remover();
+
+					exibirDado(temp);
+				}
+
+				// Guardando o valor do clock após executar as chamadas da funcao
+				finish = (double) clock();
+
+				// Calculando a diferenca de clocks entre o depois e antes das chamadas
+				elapsed = finish - start;
+
+				// Imprimindo na tela, a quantidade de clocks gastos
+				printf("\nForam utilizados %.2f clocks", elapsed);
+
 				break;
 			case 4:
+				// Guardando o valor do clock antes de executar as chamadas da funcao
+				start = (double) clock();
+
 				imprimir();
+
+				// Guardando o valor do clock após executar as chamadas da funcao
+				finish = (double) clock();
+
+				// Calculando a diferenca de clocks entre o depois e antes das chamadas
+				elapsed = finish - start;
+
+				// Imprimindo na tela, a quantidade de clocks gastos
+				printf("\nForam utilizados %.2f clocks", elapsed);
+
 				break;
 			case 5:
-				testar1_VaziaFila();
-				break;
-			case 6:
-				testar2_InserirFila(1);
-				testar2_InserirFila(2);
-				testar2_InserirFila(3);
-				testar2_InserirFila(4);
-				testar2_InserirFila(5);
-				testar2_InserirFila(6);
-				testar2_InserirFila(7);
-				break;
-			case 7:
-				testar3_RemoverFila();
-				testar4_RemoverFila(1);
-				testar4_RemoverFila(2);
-				testar4_RemoverFila(3);
-				testar4_RemoverFila(4);
-				testar4_RemoverFila(5);
-				testar4_RemoverFila(6);
-				break;
-			case 8:
 				printf("Encerrando o programa...");
 				break;
 			default:
 				printf("\nOpcao invalida. Escolha um numero valido de opcao.");
 		}
 		
-	} while(opcao != 8);
+	} while(opcao != 5);
 }

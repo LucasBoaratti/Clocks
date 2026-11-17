@@ -1,6 +1,6 @@
 # Clocks
 
-Clocks é um projeto realizado na disciplina de Estrutura de Dados 1 do curso ADS do IFSP Câmpus Hortolândia, que tem o objetivo de calcular a quantidade de clocks para cada uma das funções de inserir, imprimir e remover das estruturas de dados pilha, fila e lista, testando com 1000, 3000, 5000, 10000 e 50000 elementos, divididos em 3 baterias de teste para cada uma das funções e anotando esses valores em uma tabela, além de calcular a média de cada resultado das baterias de teste.
+**Clocks** é um projeto realizado na disciplina de Estrutura de Dados 1 do curso ADS do IFSP Câmpus Hortolândia, que tem o objetivo de calcular a quantidade de clocks para cada uma das funções de inserir, imprimir e remover das estruturas de dados pilha, fila e lista, testando com 1000, 3000, 5000, 10000 e 50000 elementos, divididos em 3 baterias de teste para cada uma das funções e anotando esses valores em uma tabela, além de calcular a média de cada resultado das baterias de teste.
 
 # Funcionalidades
 
@@ -20,17 +20,17 @@ Obs: as anotações de cada bateria de teste e das médias, estão no [Relatóri
 
 ```text
 Clocks/
-├── FilaComClock/
+├── FilaComClock/ # Testes da fila
 |   ├── .vscode 
 |   ├── main.c 
 |   ├── fila.c 
 |   └── fila.h 
-├── ListaComClock/
+├── ListaComClock/ # Testes da lista
 |   ├── .vscode 
 |   ├── main.c 
 |   ├── lista.c 
 |   └── lista.h 
-├── PilhaComClock/
+├── PilhaComClock/ # Testes da pilha
 |   ├── .vscode 
 |   ├── main.c 
 |   ├── pilha.c 

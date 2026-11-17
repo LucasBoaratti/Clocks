@@ -1,4 +1,4 @@
-#define TAM_MAX 5
+#define TAM_MAX 50000
 
 typedef struct fila {
 	int vetor[TAM_MAX];
@@ -6,15 +6,11 @@ typedef struct fila {
 } Fila;
 
 void inicializar();
+int numeroAleatorio(int low, int high);
+int obterDado();
+void exibirDado(int p);
 int verificarVazia();
 int verificarCheia();
 void inserir(int numero);
 void imprimir();
 int remover();
-
-//Funcoes para testes automatizados
-void testar1_VaziaFila();
-void testar2_InserirFila(int quant);
-void testar3_RemoverFila();
-void testar4_RemoverFila(int quant);
-

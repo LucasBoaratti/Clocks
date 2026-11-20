@@ -1,4 +1,4 @@
-#define TAM_MAX 5
+#define TAM_MAX 50000
 
 typedef struct _Lista {
     int vetor[TAM_MAX];
@@ -6,14 +6,11 @@ typedef struct _Lista {
 } Lista;
 
 void inicializar();
+int numeroAleatorio(int low, int high);
+int obterDado();
+void exibirDado(int p);
 int verificarVazia();
 int verificarCheia();
 void inserir(int numero, int posicao);
 void imprimir();
 int remover(int posicao);
-
-//Funcoes para testes automatizados
-void testar1_VaziaLista();
-void testar2_InserirLista(int quant);
-void testar3_RemoverLista();
-void testar4_RemoverLista(int quant);

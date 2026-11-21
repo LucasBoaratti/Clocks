@@ -35,7 +35,7 @@ Clocks/
 |   ├── main.c 
 |   ├── pilha.c 
 |   └── pilha.h 
-└── Relatório.docx
+└── Relatório.docx # Explicação e tabelas com cada bateria de teste da pilha, fila e lista, e suas médias.
 ```
 
 # Como rodar o projeto
